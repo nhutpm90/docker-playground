@@ -1,0 +1,28 @@
+version: "3.0"
+services:
+
+  postgres-server:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/repo/docker-playground/postgresql/data:/var/lib/postgresql
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_DB=test_db
+    networks:
+      - docker-playground-network
+
+  pgadmin-server:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=12345678
+    ports:
+      - "5433:80"
+    networks:
+      - docker-playground-network
+      
+networks:
+  docker-playground-network:
