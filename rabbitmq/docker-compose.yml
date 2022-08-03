@@ -1,0 +1,19 @@
+version: "3.0"
+services:
+
+  rabbitmq-server:
+    image: rabbitmq:3-management
+    volumes:
+      - ~/repo/docker-playground/rabbitmq/data:/var/lib/rabbitmq/mnesia/
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "61613:61613"
+    environment:
+      - HOSTNAME=my-rabbitmq
+    networks:
+      - docker-playground-network
+
+networks:
+  docker-playground-network:
+

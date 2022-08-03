@@ -1,14 +1,16 @@
 version: "3.0"
 services:
 
-  ilogicdb:
+  mysql-server:
     image: mysql:8.0.28
     ports:
       - "3307:3306"
     volumes:
-      - /home/nhutpham/repo/docker-playground/mysql/data:/var/lib/mysql
+      - ~/repo/docker-playground/mysql/data:/var/lib/mysql
     environment:
-    - MYSQL_ROOT_PASSWORD=12345678
-    
+      - MYSQL_ROOT_PASSWORD=12345678
+    networks:
+      - docker-playground-network
+      
 networks:
   docker-playground-network:
