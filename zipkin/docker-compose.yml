@@ -1,0 +1,13 @@
+version: "3.0"
+services:
+
+  zipkin:
+    image: openzipkin/zipkin
+    mem_limit: 700m
+    ports:
+      - "9411:9411"
+    networks:
+      - docker-playground-network
+
+networks:
+  docker-playground-network:
